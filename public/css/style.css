@@ -1,0 +1,36 @@
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.parallax{
+    text-align:center;
+}
+
+#botonLogin{
+    position:fixed;
+    right:10px;
+    z-index:1;
+}
+    
+.parallax-container{
+    height:665px;
+}
+
+.mdi-google-plus-box{
+    color:rgb(221,75,57);
+}
+
+.mdi-facebook-box{
+    color:rgb(59,89,152);
+}
+
+.mdi-twitter-circle{
+    color:rgb(85,172,238);
+}
+
+.circle{
+    border-radius:30%;
+    margin-top:15px;
+}
