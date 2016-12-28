@@ -7,10 +7,19 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
       <link rel="stylesheet" href="/css/style.css" type="text/css" />
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link href="bower_components/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+      <link href="./bower_components/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script>
+      //Cogemos la altura de la pantalla para darle ese height al parallax-container
+      window.onload = function(){
+      var pagina = document.getElementsByClassName("parallax");
+      var alturaScreen = this.windowHeight;
+      pagina[0].style.height = alturaScreen+"px";
+      }
+    </script>
     </head>
 
     <body>
@@ -28,51 +37,68 @@
             <img class="valign-wrapper img-responsive" src="/img/Fondo.jpg"></img>
          </div>
          <img class="displayed img-responsive" src="/img/Logo_Oficial.png"></img>
-         <p>La vida en el hogar, mas sencilla</p>
+         <p class="center">La vida en el hogar, mas sencilla</p>
+         </br>
+         </br>
+         <h5 class="center">DomoHelp, es un proyecto realizado para facilitar la vida en el hogar de las personas, centrandonos en personas con movilidad reducida.</h5>
+         
+         
       </div>
       
-      <div class="red lighten-3">
-        <div class="row">
-          <img class="imagesDis responive-img circle col s4" src="/img/Ejemplo_Disp.jpg"></img>
-          <p class="left col s8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, mollitia, voluptates, eius excepturi perferendis facere corporis sint repellendus optio ipsa delectus saepe beatae labore quae perspiciatis suscipit inventore cupiditate harum.</p>
-        </div>
-      
-        <div class="row">
-          <p class="col s8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, mollitia, voluptates, eius excepturi perferendis facere corporis sint repellendus optio ipsa delectus saepe beatae labore quae perspiciatis suscipit inventore cupiditate harum.</p>
-          <img class="imagesDis responive-img circle col s4" src="/img/Ejemplo_Disp.jpg"></img>
-        </div>
-      
-        <div class="row">
-          <img class="imagesDis responive-img circle col s4" src="/img/Ejemplo_Disp.jpg"></img>
-          <p class="left col s8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, mollitia, voluptates, eius excepturi perferendis facere corporis sint repellendus optio ipsa delectus saepe beatae labore quae perspiciatis suscipit inventore cupiditate harum.</p>
-        </div>
-      </div>
-      
-      
-      <div class="carousel carousel-slider center" data-indicators="true">
-        <div class="carousel-fixed-item center">
-          <a class="btn waves-effect white grey-text darken-text-2">button</a>
-        </div>
+      <div class="section grey lighten-2">
+        <section id="funcionamiento">
+          <h3>¿Cómo funciona?</h3>
+          <img class="displayed" src="/img/Esquema_Funcionamiento.png"></img>
+        </section>
         
-        <div class="carousel-item red white-text" href="#one!">
-          <h2>¿Que ofrecemos?</h2>
-          <p class="white-text"></p>
-          <p>Hola</p>
-        </div>
         
-        <div class="carousel-item amber white-text" href="#two!">
-          <h2>Second Panel</h2>
-          <p class="white-text">This is your second panel</p>
-        </div>
-        
-        <div class="carousel-item green white-text" href="#three!">
-          <h2>Third Panel</h2>
-          <p class="white-text">This is your third panel</p>
-        </div>
-        
-        <div class="carousel-item blue white-text" href="#four!">
-          <h2>Fourth Panel</h2>
-          <p class="white-text">This is your fourth panel</p>
+        <h3>Dispositivos que utilizamos:</h3>
+          
+          <div class="row">
+            <div class="col l4 s3 m3">
+              <div class="card">
+                <div class="card-image">
+                  <img src="img/wall_plug.jpg">
+                  <span class="card-title">Wall Plug</span>
+                </div>
+                <div class="card-content">
+                  <p>Utilizando este dispositivo podremos controlar la luz de la bonbilla que este conectada a este enchufe.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">Mas Información</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col l4 s3 m3">
+              <div class="card">
+                <div class="card-image">
+                  <img src="img/multisensor.jpeg">
+                  <span class="card-title">Multi Sensor</span>
+                </div>
+                <div class="card-content">
+                  <p>A traves de este aparato recibiremos datos de la temperatura, humedad etc. del hogar.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">Mas Información</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col l4 s3 m3">
+              <div class="card">
+                <div class="card-image">
+                  <img src="img/z_stick.jpg">
+                  <span class="card-title">Z-Stick</span>
+                </div>
+                <div class="card-content">
+                  <p>Este USB nos permite acceder y controlar todos los dispositivos que hemos instalado.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">Mas Información</a>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
       
