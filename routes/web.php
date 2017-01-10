@@ -12,9 +12,10 @@
 */
 
 Route::get('/home', function () {
-    return view('home');
+    return view('01_landing.home');
 });
 
+/*
 // route to show our edit form
 Route::get('user/edit/{id}', array('as' => 'user.edit', function($id) 
 {
@@ -27,3 +28,11 @@ Route::get('user/edit/{id}', array('as' => 'user.edit', function($id)
 Route::post('user/edit', function() {
     // process our form
 });
+*/
+
+// route to show contact form
+Route::get('contact',
+   ['as' => 'contact', 'uses' => 'ContactController@create']);
+   
+Route::post('contact',
+    ['as' => 'contact_store', 'uses' => 'ContactController@store']);

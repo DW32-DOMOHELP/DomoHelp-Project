@@ -11,9 +11,7 @@ img.displayed {
     z-index:1;
 }
     
-.parallax-container{
-    height:665px;
-}
+
 
 .mdi-google-plus-box{
     color:rgb(221,75,57);
@@ -27,7 +25,7 @@ img.displayed {
     color:rgb(85,172,238);
 }
 
-h3{
+h3 , h5{
     font-family: 'Audiowide';
 }
 
