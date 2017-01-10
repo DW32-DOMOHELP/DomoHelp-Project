@@ -25,10 +25,13 @@ img.displayed {
     color:rgb(85,172,238);
 }
 
-h3 , h5{
+h3{
     font-family: 'Audiowide';
 }
 
+h5{
+    font-family: 'Audiowide';
+}
 #funcionamiento{
     text-align:center;
 }
