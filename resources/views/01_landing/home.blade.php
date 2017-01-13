@@ -51,10 +51,6 @@
       </div>
       
       <div class="section grey lighten-3">
-            <section id="funcionamiento">
-              <h3 class="center">¿Quienes somos?</h3>
-            </section>
-        
         
         <h3 class="center">Dispositivos que utilizamos:</h3>
           
@@ -77,34 +73,90 @@
             </div>
             
             <div class="col l4 s12 m4">
-              <div class="card small">
+              <div class="card horizontal small">
                 <div class="card-image">
-                  <img src="img/Personas.png">
-                  <span class="card-title">Quienes Somos</span>
+                  <img src="img/servicio.png">
                 </div>
-                <div class="card-content">
-                  <p>A traves de este dispositivo podremos controlar la bombilla que este conectada.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">Mas Información</a>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <h5>¿Qué ofrecemos?</h5>
+                    <p>A traves de este dispositivo podremos controlar la bombilla que este conectada.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">Mas Información</a>
+                  </div>
                 </div>
               </div>
             </div>
             
             <div class="col l4 s12 m4">
-              <div class="card small">
+              <div class="card horizontal small">
                 <div class="card-image">
-                  <img src="img/multisensor.jpeg">
-                  <span class="card-title">Multi Sensor</span>
+                  <img src="img/tecnologias.png">
                 </div>
-                <div class="card-content">
-                  <p>A traves de este aparato recibiremos datos de la temperatura, humedad etc. del hogar.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">Mas Información</a>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <h5>Tecnologias utilizadas</h5>
+                    <p>A traves de este dispositivo podremos controlar la bombilla que este conectada.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">Mas Información</a>
+                  </div>
                 </div>
               </div>
             </div>
+        </div>
+      </div>
+      
+      <div class="section grey lighten-3">
+        <div class="row">
+            <div class="col l3 s3 m3">
+            </div>
+            <div class="col l6 s6 m6">
+              
+              <h3>¿Tienes alguna duda?</h3>
+              
+              <ul>
+                  @foreach($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+              
+              {!! Form::open(array('route' => 'contact_store', 'class' => 'form')) !!}
+              
+              <div class="form-group">
+                  {!! Form::label('Nombre') !!}
+                  {!! Form::text('name', null, 
+                      array('required', 
+                            'class'=>'form-control', 
+                            'placeholder'=>'Nombre')) !!}
+              </div>
+              
+              <div class="form-group">
+                  {!! Form::label('Tu cuenta de E-mail') !!}
+                  {!! Form::text('email', null, 
+                      array('required', 
+                            'class'=>'form-control', 
+                            'placeholder'=>'Tu cuenta de E-mail')) !!}
+              </div>
+              
+              <div class="form-group">
+                  {!! Form::label('Tu mensaje') !!}
+                  {!! Form::textarea('message', null, 
+                      array('required', 
+                            'class'=>'form-control', 
+                            'placeholder'=>'Tu mensaje')) !!}
+              </div>
+              
+              <div class="form-group">
+                  {!! Form::submit('Enviar!', 
+                    array('class'=>'btn btn-primary')) !!}
+              </div>
+              {!! Form::close() !!}
+              
+            </div>
+        </div>
+        <div class="col l3 s3 m3">
         </div>
       </div>
       
@@ -120,9 +172,9 @@
             <div class="col l4 offset-l2 s12">
               <h5 class="white-text">Encuentranos en:</h5>
               <ul>
-                <li><a target="_blank" href="https://www.facebook.com/DomoHelp-1406899652667203/"><i class="mdi mdi-facebook-box mdi-36px"></i></a></li>
+                <li><a target="_blank" href="https://www.facebook.com/DomoHelp-1406899652667203/"><i class="mdi mdi-facebook-box mdi-36px"></i></a><a>DomoHelp</a></li>
                 <li><a target="_blank" href="https://twitter.com/domo_help"><i class="mdi mdi-twitter-circle mdi-36px"></i></a><a>@domo_help</a></li>
-                <li><a target="_blank"href="https://plus.google.com/u/0/118116514461418291407"><i class="mdi mdi-google-plus-box mdi-36px"></i></a></li>
+                <li><a target="_blank"href="https://plus.google.com/u/0/118116514461418291407"><i class="mdi mdi-google-plus-box mdi-36px"></i></a><a>Domo Help</a></li>
               </ul>
             </div>
           </div>

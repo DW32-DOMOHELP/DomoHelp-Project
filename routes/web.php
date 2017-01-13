@@ -31,8 +31,8 @@ Route::post('user/edit', function() {
 */
 
 // route to show contact form
-Route::get('contact',
-   ['as' => 'contact', 'uses' => 'ContactController@create']);
+Route::get('home',
+   ['as' => 'home', 'uses' => 'HomeController@create']);
    
-Route::post('contact',
-    ['as' => 'contact_store', 'uses' => 'ContactController@store']);
+Route::post('home',
+    ['as' => 'contact_store', 'uses' => 'HomeController@store']);
