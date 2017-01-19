@@ -1,4 +1,4 @@
-You received a message from TODOParrot.com:
+Has recibido una consulta de DomoHelp.com:
 
 <p>
 Name: {{ $name }}

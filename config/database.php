@@ -45,18 +45,18 @@ return [
     */
 
     'connections' => [
-
+    /* Quitamos la conexion de SQLite por que no la necesitamos
         'sqlite' => [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
-        ],
+        ],*/
 
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', getenv('IP')),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'domohelp'),
+            'database' => env('DB_DATABASE', 'DomohelpDB'),
             'username' => env('DB_USERNAME', getenv('C9_USER')),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
@@ -65,7 +65,8 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-
+        
+        /*Quitamos la conexion de pgsql porque no la necesitamos
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),
@@ -77,7 +78,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
+        ],*/
 
     ],
 

@@ -15,6 +15,10 @@ Route::get('/home', function () {
     return view('01_landing.home');
 });
 
+Route::get('/interface', function () {
+    return view('04_interface.interface');
+});
+
 /*
 // route to show our edit form
 Route::get('user/edit/{id}', array('as' => 'user.edit', function($id) 

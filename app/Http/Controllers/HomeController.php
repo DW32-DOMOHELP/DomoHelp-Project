@@ -22,8 +22,8 @@ class HomeController extends Controller
             'user_message' => $request->get('message')
         ), function($message)
     {
-        $message->from('cvillarce15dw@gmail.com');
-        $message->to('cvillarce15dw@gmail.com', 'Admin')->subject('Consulta DomoHelp');
+        $message->from('carlosvwork76@gmail.com');
+        $message->to('carlosvwork76@gmail.com', 'Admin')->subject('Consulta DomoHelp');
     });
 
         return \Redirect::route('home')->with('message', '¡Gracias por contactar con nosotros!');

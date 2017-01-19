@@ -23,6 +23,7 @@
       var pagina = document.getElementsByClassName("parallax-container");
       var alturaScreen = $(window).height();
       pagina[0].style.height = alturaScreen+"px";
+      
       }
     </script>
     </head>
@@ -35,7 +36,31 @@
       
       <div id="index-banner" class="parallax-container">
         <div id="botonLogin">
-          <a class="waves-effect waves-teal btn-flat right">Login</a>
+            <!-- Modal Trigger -->
+            <button class="waves-effect waves-light btn modal-trigger" data-target="modal1">Login</button>
+
+            <!-- Modal Structure 
+            <div id="modal1" class="modal">
+              <div class="modal-content">
+                  <div class="row">
+                    <form class="col s12">
+                      <div class="row modal-form-row">
+                        <div class="input-field col s6">
+                          <input id="dni" type="text" class="validate">
+                          <label for="dni">DNI</label>
+                        </div>
+                        <div class="input-field col s6">
+                          <input id="password" type="password" class="validate">
+                          <label for="password">Password</label>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+              </div>
+            </div>-->
         </div>
         
          <div class="parallax">
@@ -150,7 +175,7 @@
               
               <div class="form-group">
                   {!! Form::submit('Enviar!', 
-                    array('class'=>'btn btn-primary')) !!}
+                    array('class'=>'btn btn-primary blue darken-3')) !!}
               </div>
               {!! Form::close() !!}
               
@@ -160,7 +185,7 @@
         </div>
       </div>
       
-      <footer class="page-footer green lighten-2">
+      <footer class="page-footer amber darken-3">
         <div class="container">
           <div class="row">
             <div class="col l6 s12">
