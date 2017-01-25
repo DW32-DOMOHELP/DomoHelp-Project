@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Registro</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
@@ -25,7 +25,7 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                            <label for="address" class="col-md-2 control-label">Direccion</label>
+                            <label for="address" class="col-md-2 control-label">Dirección</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autofocus>
@@ -66,7 +66,7 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
-                            <label for="telephone" class="col-md-4 control-label">Telefono</label>
+                            <label for="telephone" class="col-md-4 control-label">Teléfono</label>
 
                             <div class="col-md-6">
                                 <input id="telephone" type="text" class="form-control" name="telephone" value="{{ old('telephone') }}" required autofocus>
@@ -104,7 +104,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Siguiente
                                 </button>
                             </div>
                         </div>

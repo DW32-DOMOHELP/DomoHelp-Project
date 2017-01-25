@@ -73,5 +73,15 @@ class RegisterController extends Controller
             'telephone' => $data['telephone'],
             'password' => bcrypt($data['password']),
         ]);
+        
+        \Mail::send('03_mails.registro',
+        array(
+            'name' => $data['name']
+        ), function($message)
+    {
+        //$message->from('');
+        $message->to($data['email'], 'Admin')->subject('Registro DomoHelp');
+    });
+    
     }
 }
