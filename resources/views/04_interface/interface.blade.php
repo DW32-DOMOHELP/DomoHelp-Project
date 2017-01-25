@@ -1,20 +1,7 @@
-     <?php
-function sendCommand($item, $data) {
-      $url = "http://86046c81.ngrok.io/rest/items/" . $item;
+@extends('layouts.app')
 
-      $options = array(
-        'http' => array(
-            'header'  => "Content-type: text/plain\r\n",
-            'method'  => 'POST',
-            'content' => $data  //http_build_query($data),
-        ),
-      );
+@section('content')
 
-      $context  = stream_context_create($options);
-      $result = file_get_contents($url, false, $context);
+    <h1>Bienvenido a tu interface</h1>
 
-      return $result;
-    }
-    
-sendCommand("Light_FF_Bath_Ceiling", "OFF");
-?>
+@stop

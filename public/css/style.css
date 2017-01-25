@@ -10,6 +10,9 @@ img.displayed {
     right:10px;
     z-index:1;
 }
+.modal{
+    width:500px;
+}
     
 
 
@@ -34,6 +37,15 @@ h5{
 }
 #funcionamiento{
     text-align:center;
+}
+
+a {
+    color:white;
+    text-decoration:none;
+}
+
+a:visited{
+    color:white;
 }
 /*
 .modal {

@@ -19,6 +19,7 @@ Route::get('/interface', function () {
     return view('04_interface.interface');
 });
 
+
 /*
 // route to show our edit form
 Route::get('user/edit/{id}', array('as' => 'user.edit', function($id) 
@@ -40,3 +41,7 @@ Route::get('home',
    
 Route::post('home',
     ['as' => 'contact_store', 'uses' => 'HomeController@store']);
+
+Auth::routes();
+
+//Route::get('/', 'LandingController@index');
