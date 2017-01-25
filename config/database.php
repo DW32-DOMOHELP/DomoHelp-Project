@@ -66,7 +66,7 @@ return [
             'engine' => null,
         ],
         
-        /*Quitamos la conexion de pgsql porque no la necesitamos
+        
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),
@@ -78,7 +78,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],*/
+        ],
 
     ],
 
