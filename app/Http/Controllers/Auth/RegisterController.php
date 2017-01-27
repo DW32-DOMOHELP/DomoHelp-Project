@@ -77,7 +77,8 @@ class RegisterController extends Controller
         $name = $data['name'];
         Mail::send('03_mails.registro', $user, function($message)
     {
-        $message->from('domohelpproject@gmail.com', 'Admin')->subject('Registro DomoHelp')->to($user, $name);
+        $message->from('domohelpproject@gmail.com', 'Admin');
+        $message->to($user, $name)->subject('Registro DomoHelp');
     
     });
         
