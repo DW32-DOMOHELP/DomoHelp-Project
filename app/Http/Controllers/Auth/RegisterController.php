@@ -71,17 +71,17 @@ class RegisterController extends Controller
             'pcod' => $data['pcod'],
             'email' => $data['email'],
             'telephone' => $data['telephone'],
-            'password' => bcrypt($data['password']),
-        ]);
-        
-        \Mail::send('03_mails.registro',
-        array(
-            'name' => $data['name']
-        ), function($message)
+            'password' => bcrypt($data['password'])]);
+            $user = $data['email'];
+            Mail::send('03_mails.registro', $user, function($message) use ($user)
     {
-        //$message->from('');
-        $message->to($data['email'], 'Admin')->subject('Registro DomoHelp');
+     $message->from('domohelpproject@gmail.com', 'Equipo DomoHelp');
+         $message->subject("Bienvenido a DomoHelp");
+         $message->to($user);
+    
     });
+        
+        
     
     }
 }

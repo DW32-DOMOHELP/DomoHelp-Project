@@ -9,6 +9,7 @@ img.displayed {
     position:fixed;
     right:10px;
     z-index:1;
+    color:black;
 }
 .modal{
     width:500px;
@@ -38,15 +39,15 @@ h5{
 #funcionamiento{
     text-align:center;
 }
-
 a {
-    color:white;
+    color:black;
     text-decoration:none;
 }
 
 a:visited{
-    color:white;
+    color:black;
 }
+
 /*
 .modal {
   max-height: 20%;

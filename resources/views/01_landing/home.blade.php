@@ -29,6 +29,8 @@
       var pagina = document.getElementsByClassName("parallax-container");
       var alturaScreen = $(window).height();
       pagina[0].style.height = alturaScreen+"px";
+ 
+      
       
       }
     </script>
@@ -37,16 +39,16 @@
     <body class="grey lighten-3">
      
       
-      <a id="botonLogin" class="btn" href="{{ url('/login') }}">Login</a>
+      <a id="botonLogin" class="waves-effect btn amber darken-3" href="{{ url('/login') }}">Login</a>
 
       <div id="index-banner" class="parallax-container">
             
         
         
          <div class="parallax">
-            <img class="valign-wrapper img-responsive" src="/img/Fondo.jpg"></img>
+            <img class="valign-wrapper responsive-img" src="/img/Fondo.jpg"></img>
          </div>
-         <img class="displayed img-responsive" src="/img/Logo_Oficial.png"></img>
+         <img class="displayed responsive-img" src="/img/Logo_Oficial.png"></img>
          <p class="center">La vida en el hogar, mas sencilla</p>
          </br>
          </br>
@@ -68,7 +70,7 @@
                 <div class="card-stacked">
                   <div class="card-content">
                     <h5>¿Quienes somos?</h5>
-                    <p>A traves de este dispositivo podremos controlar la bombilla que este conectada.</p>
+                    <p>Somos un grupo de estudiantes que pretende, a traves de este proyecto, facilitar la vida en el hogar de las personas.</p>
                   </div>
                   <div class="card-action">
                     <a href="#">Mas Información</a>
@@ -85,7 +87,7 @@
                 <div class="card-stacked">
                   <div class="card-content">
                     <h5>¿Qué ofrecemos?</h5>
-                    <p>A traves de este dispositivo podremos controlar la bombilla que este conectada.</p>
+                    <p>A traves de nuestra aplicacion podrás controlar diferentes dispositivos que hayamos instalado distribuidos por el hogar.</p>
                   </div>
                   <div class="card-action">
                     <a href="#">Mas Información</a>
@@ -102,7 +104,7 @@
                 <div class="card-stacked">
                   <div class="card-content">
                     <h5>Tecnologias utilizadas</h5>
-                    <p>A traves de este dispositivo podremos controlar la bombilla que este conectada.</p>
+                    <p>Principalmente utilizamos una herramienta llamada OpenHab, que nos permite el control de los dispositivos.</p>
                   </div>
                   <div class="card-action">
                     <a href="#">Mas Información</a>
@@ -155,7 +157,7 @@
               
               <div class="form-group">
                   {!! Form::submit('Enviar!', 
-                    array('class'=>'btn btn-primary blue darken-3')) !!}
+                    array('class'=>'btn btn-primary amber darken-3')) !!}
               </div>
               {!! Form::close() !!}
               

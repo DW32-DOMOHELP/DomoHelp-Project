@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
     <!--Import Google Icon Font-->
     <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
     <!--Import materialize.css-->
@@ -54,7 +55,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <img class="responsive-img" src="/img/Logo_Oficial.png" width="70px" height="70px"></img>
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         {{ config('app.name', 'DomoHelp') }}
                     </a>
                 </div>
