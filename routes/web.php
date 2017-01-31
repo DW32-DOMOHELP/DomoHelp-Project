@@ -49,7 +49,7 @@ Route::get('/logout', function () {
     return redirect('/home');
 });
 
-Route::post('interface',
-    ['as' => 'contact_store', 'uses' => 'InterfaceController@sendCommand']);
+
+Route::post('/interface', 'InterfaceController@sendCommand');
 
 //Route::get('/', 'LandingController@index');

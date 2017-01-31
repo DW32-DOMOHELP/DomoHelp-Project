@@ -46,7 +46,7 @@
         
         
          <div class="parallax">
-            <img class="valign-wrapper responsive-img" src="/img/Fondo.jpg"></img>
+            <img class="valign-wrapper" src="/img/Fondo.jpg"></img>
          </div>
          <img class="displayed responsive-img" src="/img/Logo_Oficial.png"></img>
          <p class="center">La vida en el hogar, mas sencilla</p>
@@ -59,7 +59,7 @@
       
       <div class="section grey lighten-3">
         
-        <h3 class="center">Dispositivos que utilizamos:</h3>
+        <h3 class="center">Sobre nosotros:</h3>
           
           <div class="row">
             <div class="col l4 s12 m4">

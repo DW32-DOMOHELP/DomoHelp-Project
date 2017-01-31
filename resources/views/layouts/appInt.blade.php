@@ -24,6 +24,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/1.7.22/css/materialdesignicons.min.css" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    
     <!-- froga
     <link href="bower_components/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
     -->
@@ -34,11 +35,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <!-- Scripts -->
-    <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-    </script>
+
 </head>
 <body>
     <div id="app">
@@ -99,9 +96,28 @@
             </div>
         </nav>
 
-        @yield('content')
-    </div>
 
+        
+    </div>
+        <h1>Bienvenido a tu interface </h1> 
+    
+    <form name="form1">
+        <input type="button" id="Light_FF_Bath_Ceiling" class="botonOn"  value="ON">
+    </form>
+    <script>
+    window.Laravel = <?php echo json_encode([
+        'csrfToken' => csrf_token(),
+    ]); ?>
+    
+    $('#Light_FF_Bath_Ceiling').on('click', botonOnPuls);
+    function botonOnPuls() {
+         var estado = $('#Light_FF_Bath_Ceiling').val();
+         var objeto = $('#Light_FF_Bath_Ceiling').attr('id');
+
+        $.post('/interface', {state:estado, item:objeto}, function (data){
+        });
+    }
+    </script>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
 </body>

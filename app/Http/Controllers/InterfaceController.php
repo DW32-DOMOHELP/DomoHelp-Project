@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class InterfaceController extends Controller
 {
-    function sendCommand($item, $data) {
-      $url = "http://86046c81.ngrok.io/rest/items/" . $item;
+    function sendCommand(Request $request) {
+    $url = "http://e23f95bd.ngrok.io/rest/items/" . $request['item'];
 
       $options = array(
         'http' => array(
             'header'  => "Content-type: text/plain\r\n",
             'method'  => 'POST',
-            'content' => $data  //http_build_query($data),
+            'content' => $request['state']  //http_build_query($data),
         ),
       );
 
@@ -21,5 +21,9 @@ class InterfaceController extends Controller
       $result = file_get_contents($url, false, $context);
 
       return $result;
+      
+      
+
     }
 }
+
