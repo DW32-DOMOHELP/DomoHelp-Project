@@ -3,16 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\User;
 
-class UserController extends Controller
+class ItemController extends Controller
 {
-    public function _construct()
-    {
-        $this->middleware('auth');    
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +13,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id_user', 'ASC') -> paginate(5);
-        
-        return view('00_admin.00_users.index') -> with('users', $users);
         
     }
 
@@ -33,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('00_admin.00_users.create');
+        
     }
 
     /**
@@ -44,10 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User($request -> all());
-        $user -> password = bcrypt($request -> password);
-        $user -> save();
-        dd("Usuario creado correctamente");
+        //
     }
 
     /**

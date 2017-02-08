@@ -29,6 +29,10 @@ img.displayed {
     color:rgb(85,172,238);
 }
 
+h1{
+    font-family: 'Audiowide';
+}
+
 h3{
     font-family: 'Audiowide';
 }
@@ -46,6 +50,11 @@ a {
 
 a:visited{
     color:black;
+}
+
+.btn-large {
+    width:200px !important ;
+    height:150px !important ;
 }
 
 /*

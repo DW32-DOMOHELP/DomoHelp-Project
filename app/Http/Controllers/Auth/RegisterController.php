@@ -6,6 +6,7 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/interface';
 
     /**
      * Create a new controller instance.
@@ -73,16 +74,14 @@ class RegisterController extends Controller
             'telephone' => $data['telephone'],
             'password' => bcrypt($data['password'])
         ]);
-        $user = $data['email'];
-        $name = $data['name'];
-        Mail::send('03_mails.registro', $user, function($message)
-    {
-        $message->from('domohelpproject@gmail.com', 'Admin');
-        $message->to($user, $name)->subject('Registro DomoHelp');
-    
-    });
         
+        Mail::send('03_mails.registro', $data, function($message) use ($data) {
+             $message->from('domohelpproject@gmail.com', "DomoHelp");
+                $message->subject("Welcome to site name");
+                $message->to($data['email']);
+        });
         
+        return $user;
     
     }
 }

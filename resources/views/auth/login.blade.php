@@ -53,7 +53,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link amber darken-3" href="{{ url('/password/reset') }}">
+                                <a class="btn-link" href="{{ url('/password/reset') }}">
                                     Olvidaste la contraseña?
                                 </a>
                             </div>

@@ -7,6 +7,6 @@ $(document).ready(function(){
       starting_top: '4%', // Starting top style attribute
       ending_top: '10%', // Ending top style attribute
     }
-  ); 
-    });
+  );
+});
    

@@ -13,6 +13,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/1.7.22/css/materialdesignicons.min.css" type="text/css" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+      <script src="//js.pusher.com/3.0/pusher.min.js"></script>
       <!-- froga
       <link href="bower_components/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
       -->
@@ -29,17 +30,18 @@
       var pagina = document.getElementsByClassName("parallax-container");
       var alturaScreen = $(window).height();
       pagina[0].style.height = alturaScreen+"px";
- 
-      
-      
+      $('.valign-wrapper').css('transform','translate3d(-50%, 0px, 0px)');
       }
     </script>
     </head>
 
     <body class="grey lighten-3">
      
-      
+      @if (Auth::guest())
       <a id="botonLogin" class="waves-effect btn amber darken-3" href="{{ url('/login') }}">Login</a>
+      @else
+      <a id="botonLogin" class="waves-effect btn amber darken-3" href="{{ url('/interface') }}">{{ Auth::user()->name }}</a>
+      @endif
 
       <div id="index-banner" class="parallax-container">
             
@@ -65,7 +67,7 @@
             <div class="col l4 s12 m4">
               <div class="card horizontal small">
                 <div class="card-image">
-                  <img class="responsive-img" src="img/Personas.png">
+                  <img class="hide-on-med-only" src="img/Personas.png">
                 </div>
                 <div class="card-stacked">
                   <div class="card-content">
@@ -82,7 +84,7 @@
             <div class="col l4 s12 m4">
               <div class="card horizontal small">
                 <div class="card-image">
-                  <img class="responsive-img" src="img/servicio.png">
+                  <img class="hide-on-med-only" src="img/servicio.png">
                 </div>
                 <div class="card-stacked">
                   <div class="card-content">
@@ -99,7 +101,7 @@
             <div class="col l4 s12 m4">
               <div class="card horizontal small">
                 <div class="card-image">
-                  <img class="responsive-img" src="img/tecnologias.png">
+                  <img class="hide-on-med-only" src="img/tecnologias.png">
                 </div>
                 <div class="card-stacked">
                   <div class="card-content">
