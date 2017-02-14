@@ -41,6 +41,15 @@
             }
         });
     </script>
+    <script src="//js.pusher.com/3.0/pusher.min.js"></script>
+    <script>
+        var pusher = new Pusher("{{env('PUSHER_KEY')}}")
+        var channel = pusher.subscribe('test-channel');
+        
+        channel.bind('test-event', function(data) {
+            alert(data.text);
+        });
+    </script>
 </head>
 <body>
     <div id="app">
@@ -109,87 +118,47 @@
     </div>
         
         <div class="section">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h3>Luz del Baño</h3>
-                    <div class="row">
-                        <div class="col l4">
-                            <form id="Luz_Baño_ON" action="/interface" method="POST">
-                                <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                                <input type="hidden" name="item" value="argia_3"/>
-                                <input type="hidden" name="state" value="ON"/>
-                                <input class="btn-large green darken-1" type="hidden" value="ON">
-                                <a href="#" onClick="Luz_Baño_ON.submit()"><img src="/img/Luz_Encendida.PNG"></img></a>
-                            </form>
-                        </div>
-                        
-                        <div class="col l4">
-                            <form action="/interface" method="POST">
-                                <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                                <input type="hidden" name="item" value="argia_3"/>
-                                <input type="hidden" name="state" value="OFF"/>
-                                <input class="right btn-large red darken-1" type="submit" value="OFF">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col l6 s12">
-                    <h3>Luz del Espejo</h3>
-                    <div class="row">
-                        <div class="col l4">
-                            <form action="/interface" method="POST">
-                                <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                                <input type="hidden" name="item" value="Light_FF_Bath_Mirror"/>
-                                <input type="hidden" name="state" value="ON"/>
-                                <input class="btn-large green darken-1" type="submit" value="ON">
-                            </form>
-                        </div>
-                        
-                        <div class="col l4">
-                            <form action="/interface" method="POST">
-                                <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                                <input type="hidden" name="item" value="Light_FF_Bath_Mirror"/>
-                                <input type="hidden" name="state" value="OFF"/>
-                                <input class="right btn-large red darken-1" type="submit" value="OFF">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             
-            @foreach ($items as $item)
-            @if ($item->state == 'OFF')
-            <div class="col l4">
-                <form id="Luz_Baño_ON" action="/interface" method="POST">
+            <!-- Hacer el codigo para cuando no haya ningun item, es decir cuando tenga el rol user-->
+            @for ($i = 0; $i < count($items); $i++)
+            @if ($i % 2 == 0 || $i == 0)
+                <div class="row">
+            @endif
+            
+            @if ($items[$i]->state == 'OFF')
+            <div class="col l6">
+                <h3>{{$items[$i]->description}}</h3>
+                <form id="{{$items[$i]->type}}" action="/interface" method="POST">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                    <input type="hidden" name="item" value="{{$item->type}}"/>
+                    <input type="hidden" name="item" value="{{$items[$i]->type}}"/>
                     <input type="hidden" name="state" value="ON"/>
-                    <input class="btn-large green darken-1" type="hidden" value="{{$item->state}}">
-                    <a href="#" onClick="Luz_Baño_ON.submit()"><img src="/img/Luz_Apagada.PNG"></img></a>
+                    <a onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Apagada.PNG"></img></a>
                 </form>
             </div>
             @else
-            <div class="col l4">
-                <form id="Luz_Baño_ON" action="/interface" method="POST">
+            <div class="col l6">
+                <h3>{{$items[$i]->description}}</h3>
+                <form id="{{$items[$i]->type}}" action="/interface" method="POST">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                    <input type="hidden" name="item" value="{{$item->type}}"/>
-                    <input type="hidden" name="state" value="ON"/>
-                    <input class="btn-large green darken-1" type="hidden" value="{{$item->state}}">
-                    <a href="#" onClick="Luz_Baño_ON.submit()"><img src="/img/Luz_Encendida.PNG"></img></a>
+                    <input type="hidden" name="item" value="{{$items[$i]->type}}"/>
+                    <input type="hidden" name="state" value="OFF"/>
+                    <a onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Encendida.PNG"></img></a>
                 </form>
             </div>
             @endif
-            @endforeach
+            @if ($i % 2 != 0)
+                </div>
+            @endif
+            @endfor
         </div>
 
     <script>
     window.Laravel = <?php echo json_encode([
         'csrfToken' => csrf_token(),
     ]); ?>
-    
     </script>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/admin.js"></script>
 </body>
 </html>

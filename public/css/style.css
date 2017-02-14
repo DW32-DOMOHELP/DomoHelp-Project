@@ -57,6 +57,10 @@ a:visited{
     height:150px !important ;
 }
 
+td{
+    text-align:center;
+}
+
 /*
 .modal {
   max-height: 20%;

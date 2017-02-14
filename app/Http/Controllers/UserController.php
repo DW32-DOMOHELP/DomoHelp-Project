@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\User;
+use Laracasts\Flash\Flash;
+use HttpOz\Roles\Models\Role;
 
 class UserController extends Controller
 {
@@ -20,7 +23,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id_user', 'ASC') -> paginate(5);
+        //$users = User::orderBy('id_user', 'ASC') -> paginate(5);
+        
+        $users = DB::table('users')
+            ->join('role_user', 'users.id_user', '=', 'role_user.user_id')
+            ->join('roles', 'roles.id', '=', 'role_user.role_id')
+            ->select('users.*', 'roles.group')
+            ->orderBy('id_user', 'asc')
+            ->paginate(5);
         
         return view('00_admin.00_users.index') -> with('users', $users);
         
@@ -47,7 +57,15 @@ class UserController extends Controller
         $user = new User($request -> all());
         $user -> password = bcrypt($request -> password);
         $user -> save();
-        dd("Usuario creado correctamente");
+        if($request -> user_type === '1'){
+            $user-> attachRole(1);
+        }elseif($request -> user_type === '2'){
+            $user-> attachRole(2);
+        }else{
+            $user-> attachRole(3);
+        }
+        Flash::success("Se ha registrado ". $user->name . " de forma correcta");
+        return redirect()->route('users.index');
     }
 
     /**
@@ -67,9 +85,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_user)
     {
-        //
+        $user = User::find($id_user);
+        
+        $type = DB::table('role_user')
+            ->select('role_id')
+            ->where('user_id', $id_user)
+            ->get();
+        
+        // $user = DB::table('users')
+        //     ->join('role_user', 'users.id_user', '=', 'role_user.user_id')
+        //     ->join('roles', 'roles.id', '=', 'role_user.role_id')
+        //     ->select('users.*', 'roles.group')
+        //     ->where('id_user', $id_user)
+        //     ->get();
+        return view('00_admin.00_users.edit')->with('role_user', $type)->with('user', $user);
+        
     }
 
     /**
@@ -79,9 +111,26 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_user)
     {
-        //
+        $user = User::find($id_user);
+        $user->name = $request->name;
+        $user->address = $request->address;
+        $user->pcod = $request->pcod;
+        $user->email = $request->email;
+        $user->telephone = $request->telephone;
+        $user -> save();
+        $user->detachAllRoles();
+        if($request -> user_type === '1'){
+            $user-> attachRole(1);
+        }elseif($request -> user_type === '2'){
+            $user-> attachRole(2);
+        }else{
+            $user-> attachRole(3);
+        }
+        
+        Flash::warning("El usuario ". $user->name . " se ha editado de forma correcta");
+        return redirect()->route('users.index');
     }
 
     /**
@@ -90,8 +139,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_user)
     {
-        //
+        $user = User::find($id_user);
+        $user->delete();
+        Flash::error("Se ha eliminado a ". $user->name . " de forma correcta");
+        return redirect()->route('users.index');
     }
 }

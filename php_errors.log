@@ -2,3 +2,4 @@
 [01-Feb-2017 08:33:25 UTC] PHP Fatal error:  Trait 'App\Http\Controllers\Auth\Mail' not found in /home/ubuntu/workspace/app/Http/Controllers/Auth/RegisterController.php on line 24
 [07-Feb-2017 12:38:29 UTC] PHP Fatal error:  Interface 'vendor\laravel\framework\src\Illuminate\Contracts\Broadcasting\ShouldBroadcast' not found in /home/ubuntu/workspace/routes/web.php on line 15
 [07-Feb-2017 12:39:59 UTC] PHP Fatal error:  Interface 'vendor\laravel\framework\src\Illuminate\Contracts\Broadcasting\ShouldBroadcast' not found in /home/ubuntu/workspace/routes/web.php on line 15
+[13-Feb-2017 09:15:49 UTC] PHP Fatal error:  Constant expression contains invalid operations in /home/ubuntu/workspace/app/Http/Controllers/Auth/LoginController.php on line 28

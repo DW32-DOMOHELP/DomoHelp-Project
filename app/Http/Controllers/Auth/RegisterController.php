@@ -6,6 +6,7 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use HttpOz\Roles\Models\Role;
 use Mail;
 
 class RegisterController extends Controller
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/interface';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -82,6 +83,6 @@ class RegisterController extends Controller
         });
         
         return $user;
-    
+        $user-> attachRole(3);
     }
 }

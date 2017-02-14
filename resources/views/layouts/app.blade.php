@@ -98,11 +98,12 @@
                 </div>
             </div>
         </nav>
-
+        @include('flash::message')
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/admin.js"></script>
 </body>
 </html>

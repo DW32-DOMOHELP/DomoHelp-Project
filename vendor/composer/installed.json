@@ -3787,5 +3787,97 @@
             "rest",
             "trigger"
         ]
+    },
+    {
+        "name": "httpoz/roles",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/httpoz/roles.git",
+            "reference": "d8e174ae2f2f7abcc9d09bbb4d622a005ca22b72"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/httpoz/roles/zipball/d8e174ae2f2f7abcc9d09bbb4d622a005ca22b72",
+            "reference": "d8e174ae2f2f7abcc9d09bbb4d622a005ca22b72",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.3.*",
+            "php": ">=5.6.4"
+        },
+        "time": "2016-11-18 14:50:19",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "HttpOz\\Roles\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Oscar Mwanandimai",
+                "email": "oscar.mwana@gmail.com"
+            }
+        ],
+        "description": "Powerful package for handling roles and permissions in Laravel 5.3.",
+        "keywords": [
+            "acl",
+            "auth",
+            "illuminate",
+            "laravel",
+            "permissions",
+            "roles"
+        ]
+    },
+    {
+        "name": "laracasts/flash",
+        "version": "2.0.1",
+        "version_normalized": "2.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laracasts/flash.git",
+            "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laracasts/flash/zipball/03eec812fd6ae948664ff51b4320785f6d15ee5d",
+            "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "dev-master"
+        },
+        "time": "2016-07-11 20:46:02",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Laracasts\\Flash": "src/"
+            },
+            "files": [
+                "src/Laracasts/Flash/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeffrey Way",
+                "email": "jeffrey@laracasts.com"
+            }
+        ],
+        "description": "Easy flash notifications"
     }
 ]
