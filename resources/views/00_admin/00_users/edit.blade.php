@@ -84,6 +84,8 @@
                             <button type="submit" class="btn btn-primary amber darken-3">
                                 Siguiente
                             </button>
+                            
+                            <a id="botonCancelar" class="btn red darken-3" href="{{ url('/admin/users') }}">Cancelar</a>
                         </div>
                     </div>
                     </form>

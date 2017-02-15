@@ -48,6 +48,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
        'uses' => 'UserController@edit'
        ]);
     Route::resource('items', 'ItemController');
+    Route::get('items/{id_item}/destroy', [
+       'as' => 'admin.items.destroy',
+       'uses' => 'ItemController@destroy'
+       ]);
+    Route::get('items/{id_item}/edit', [
+       'as' => 'admin.items.edit',
+       'uses' => 'ItemController@edit'
+       ]);
     
 });
 

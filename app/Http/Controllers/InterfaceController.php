@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class InterfaceController extends Controller
 {
     function sendCommand() {
-    $url = "http://8f745958.ngrok.io/rest/items/" . $_POST['item'];
+    $url = "http://310fc20c.ngrok.io/rest/items/" . $_POST['item'];
 
       $options = array(
          'http' => array(
@@ -21,7 +21,7 @@ class InterfaceController extends Controller
        $result = file_get_contents($url, false, $context);
         
       return redirect('/interface');
-
+        
     }
     
     

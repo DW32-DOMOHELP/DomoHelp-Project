@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/css/interface.css" type="text/css" />
     <!--Import Google Icon Font-->
     <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
     <!--Import materialize.css-->
@@ -113,8 +113,9 @@
 
         
     </div>
-    <div>
-        <h1>Bienvenido a tu interface </h1>
+   
+    <div class="row">
+        <div style="text-align:center" class="col s12 m12 l12"><h1>Bienvenido a tu interfaz</h1></div>
     </div>
         
         <div class="section">
@@ -126,9 +127,9 @@
             @endif
             
             @if ($items[$i]->state == 'OFF')
-            <div class="col l6">
+            <div class="button col s12 m6 l6">
                 <h3>{{$items[$i]->description}}</h3>
-                <form id="{{$items[$i]->type}}" action="/interface" method="POST">
+                <form id="{{$items[$i]->type}}" action="/interface/{{$items[$i]->id_usuario}}" method="POST">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                     <input type="hidden" name="item" value="{{$items[$i]->type}}"/>
                     <input type="hidden" name="state" value="ON"/>
@@ -136,9 +137,9 @@
                 </form>
             </div>
             @else
-            <div class="col l6">
+            <div class="button col s12 m6 l6">
                 <h3>{{$items[$i]->description}}</h3>
-                <form id="{{$items[$i]->type}}" action="/interface" method="POST">
+                <form id="{{$items[$i]->type}}" action="/interface/{{$items[$i]->id_usuario}}" method="POST">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                     <input type="hidden" name="item" value="{{$items[$i]->type}}"/>
                     <input type="hidden" name="state" value="OFF"/>
@@ -159,6 +160,5 @@
     </script>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    <script src="/js/admin.js"></script>
 </body>
 </html>

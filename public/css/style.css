@@ -43,14 +43,6 @@ h5{
 #funcionamiento{
     text-align:center;
 }
-a {
-    color:black;
-    text-decoration:none;
-}
-
-a:visited{
-    color:black;
-}
 
 .btn-large {
     width:200px !important ;
@@ -70,3 +62,12 @@ td{
   margin-bottom: 0px;
 }
 */
+
+#redesSociales ul{
+  list-style: none;
+  
+}
+#redesSociales li{
+  display: inline;
+  margin-left:10px;
+}

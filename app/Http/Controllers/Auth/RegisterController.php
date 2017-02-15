@@ -83,6 +83,5 @@ class RegisterController extends Controller
         });
         
         return $user;
-        $user-> attachRole(3);
     }
 }

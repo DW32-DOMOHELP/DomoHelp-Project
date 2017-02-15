@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use App\Item;
+use Laracasts\Flash\Flash;
 
 class ItemController extends Controller
 {
@@ -13,7 +18,9 @@ class ItemController extends Controller
      */
     public function index()
     {
+        $items = DB::table('items')->paginate(5);
         
+        return view('00_admin.01_items.items_index') -> with('items', $items);
     }
 
     /**
@@ -23,7 +30,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        
+        return view('00_admin.01_items.items_create');
     }
 
     /**
@@ -34,7 +41,10 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new Item($request -> all());
+        $item -> save();
+        Flash::success("Se ha registrado ". $user->name . " de forma correcta");
+        return redirect()->route('users.index');
     }
 
     /**
@@ -54,9 +64,11 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_item)
     {
-        //
+         $item = Item::find($id_item);
+         
+         return view('00_admin.01_items.items_edit')->with('item', $item);
     }
 
     /**
@@ -66,9 +78,18 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_item)
     {
-        //
+        $item = Item::find($id_item);
+        $item->ip = $request->ip;
+        $item->type = $request->type;
+        $item->description = $request->description;
+        $item->state = $request->state;
+        $item->id_usuario = $request->id_usuario;
+        $user -> save();
+        
+        Flash::warning("El dispositivo". $type->type . " se ha editado de forma correcta");
+        return redirect()->route('items.index');
     }
 
     /**
@@ -77,8 +98,12 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_item)
     {
-        //
+        $item = Item::find($id_item);
+        $item->delete();
+        
+        Flash::warning("El dispositivo". $type->type . " se ha eliminado de forma correcta");
+        return redirect()->route('items.index');
     }
 }
