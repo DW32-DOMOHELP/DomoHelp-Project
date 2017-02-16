@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class InterfaceController extends Controller
 {
     function sendCommand() {
-    $url = "http://310fc20c.ngrok.io/rest/items/" . $_POST['item'];
+    $url = "http://a134b21e.ngrok.io/rest/items/" . $_POST['item'];
 
       $options = array(
          'http' => array(

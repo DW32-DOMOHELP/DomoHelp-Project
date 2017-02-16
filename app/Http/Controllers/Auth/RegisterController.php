@@ -83,5 +83,7 @@ class RegisterController extends Controller
         });
         
         return $user;
+        $user = User::find($data['email']);
+        $user-> attachRole(3);
     }
 }

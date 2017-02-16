@@ -43,11 +43,27 @@
     </script>
     <script src="//js.pusher.com/3.0/pusher.min.js"></script>
     <script>
-        var pusher = new Pusher("{{env('PUSHER_KEY')}}")
-        var channel = pusher.subscribe('test-channel');
-        
-        channel.bind('test-event', function(data) {
-            alert(data.text);
+        var pusher = new Pusher("{{env('PUSHER_KEY')}}");
+        //subscribirse al canal
+        var channel = pusher.subscribe('domohelp-channel');
+        //bindearse al evento que queremos para recibir cada mensaje q se envie como ese evento
+        channel.bind('actualizar-estado', function(data) {
+            
+            //coger el json e traducirlo a array de js
+            datos=JSON.parse(data);
+            if(datos["estado"]=="OFF"){
+                //jquery cambiar los items
+                $('#estado'+datos['id_item']).attr('value', 'OFF');
+                $('#imagen'+ datos['id_item']).html('<img src="/img/Luz_Encendida.PNG">');
+            }
+            else{
+                //jquery cambiar los items
+                $('#estado'+datos['id_item']).attr('value', 'ON');
+                $('#imagen'+ datos['id_item']).html('<img src="/img/Luz_Apagada.PNG">');
+                 
+                
+            }
+            
         });
     </script>
 </head>
@@ -132,8 +148,8 @@
                 <form id="{{$items[$i]->type}}" action="/interface/{{$items[$i]->id_usuario}}" method="POST">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                     <input type="hidden" name="item" value="{{$items[$i]->type}}"/>
-                    <input type="hidden" name="state" value="ON"/>
-                    <a onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Apagada.PNG"></img></a>
+                    <input id="estado{{$items[$i]->id_item}}" type="hidden" name="state" value="ON"/>
+                    <a id="imagen{{$items[$i]->id_item}}" onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Apagada.PNG"></img></a>
                 </form>
             </div>
             @else
@@ -142,8 +158,8 @@
                 <form id="{{$items[$i]->type}}" action="/interface/{{$items[$i]->id_usuario}}" method="POST">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                     <input type="hidden" name="item" value="{{$items[$i]->type}}"/>
-                    <input type="hidden" name="state" value="OFF"/>
-                    <a onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Encendida.PNG"></img></a>
+                    <input id="estado{{$items[$i]->id_item}}" type="hidden" name="state" value="OFF"/>
+                    <a id="imagen{{$items[$i]->id_item}}" onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Encendida.PNG"></img></a>
                 </form>
             </div>
             @endif

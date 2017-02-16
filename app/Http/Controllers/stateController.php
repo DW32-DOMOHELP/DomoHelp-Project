@@ -16,10 +16,18 @@ class stateController extends Controller
         //$id_user =  Auth::user()->id_user ;
         
         
-        
         DB::table('items')
             ->where('type', $id)
             ->update(['state' => $val]);
+        
+        //hacer el pusher
+        $pusher = App::make('pusher');
+        //hacer un array con los datos a pasar
+        $arr = array ('estado' => $val, 'id_item' => $id);
+        //pasarlo a json
+        $datos=json_encode($arr);
+        //mandar mensaje
+        $pusher->trigger('domohelp-channel', 'actualizar-estado', $datos);
         
     }
     

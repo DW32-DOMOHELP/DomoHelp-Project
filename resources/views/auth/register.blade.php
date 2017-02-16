@@ -104,7 +104,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary amber darken-3">
-                                    Siguiente
+                                    Registrarse
                                 </button>
                             </div>
                         </div>
