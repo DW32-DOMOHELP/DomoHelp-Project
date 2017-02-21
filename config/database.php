@@ -52,23 +52,23 @@ return [
             'prefix' => '',
         ],*/
 
-        'mysql' => [
-            'driver' => 'mysql',
-            'host' => env('DB_HOST', getenv('IP')),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'DomohelpDB'),
-            'username' => env('DB_USERNAME', getenv('C9_USER')),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix' => '',
-            'strict' => false,
-            'engine' => null,
-        ],
+        // 'mysql' => [
+        //     'driver' => 'mysql',
+        //     'host' => env('DB_HOST', getenv('IP')),
+        //     'port' => env('DB_PORT', '3306'),
+        //     'database' => env('DB_DATABASE', 'DomohelpDB'),
+        //     'username' => env('DB_USERNAME', getenv('C9_USER')),
+        //     'password' => env('DB_PASSWORD', ''),
+        //     'charset' => 'utf8',
+        //     'collation' => 'utf8_unicode_ci',
+        //     'prefix' => '',
+        //     'strict' => false,
+        //     'engine' => null,
+        // ],
         
         
         
-        /*'pgsql' => [
+        'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '5432'),
@@ -79,7 +79,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],*/
+        ],
 
     ],
 
