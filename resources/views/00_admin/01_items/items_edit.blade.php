@@ -47,13 +47,13 @@
                         </div>
                     </div>
             
-                    <div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
-                        <label for="userid" class="col-md-4 control-label">Usuario</label>
+                    <div class="form-group{{ $errors->has('id_usuario') ? ' has-error' : '' }}">
+                        <label for="id_usuario" class="col-md-4 control-label">Usuario</label>
                         <div class="col-md-6">
-                            <input id="userid" type="number" class="form-control" name="userid" value="{{ $item->userid }}" required>
-                                @if ($errors->has('userid'))
+                            <input id="id_usuario" type="text" class="form-control" name="id_usuario" value="{{ $item->id_usuario }}" required>
+                                @if ($errors->has('id_usuario'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('userid') }}</strong>
+                                        <strong>{{ $errors->first('id_usuario') }}</strong>
                                     </span>
                                 @endif
                         </div>

@@ -14,6 +14,6 @@ class Item extends Model
     protected $primaryKey = 'id_item';
     
     protected $fillable = [
-        'ip', 'type', 'description', 'state',
+        'ip', 'type', 'description', 'state', 'id_usuario',
     ];
 }

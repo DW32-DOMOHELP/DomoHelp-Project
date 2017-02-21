@@ -6,7 +6,9 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 use DB;
+
 
 class stateController extends Controller
 {
@@ -27,8 +29,7 @@ class stateController extends Controller
         //pasarlo a json
         $datos=json_encode($arr);
         //mandar mensaje
-        $pusher->trigger('domohelp-channel', 'actualizar-estado', $datos);
-        
+        $pusher->trigger('domohelp', 'actualizar', $datos);
     }
     
     public function sacarItems($id_user){

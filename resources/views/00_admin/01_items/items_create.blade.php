@@ -50,7 +50,7 @@
                     <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
                         <label for="state" class="col-md-4 control-label">Estado</label>
                         <div class="col-md-8">
-                            <input disabled id="state" type="text" class="form-control" name="state" value="OFF" required autofocus>
+                            <input id="state" type="text" class="form-control" name="state" value="OFF" required autofocus>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
@@ -60,12 +60,12 @@
                     </div>
             
                     <div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
-                        <label for="userid" class="col-md-4 control-label">Usuario</label>
+                        <label for="id_usuario" class="col-md-4 control-label">Usuario</label>
                         <div class="col-md-6">
-                            <input id="userid" type="number" class="form-control" name="userid" value="{{ old('userid') }}" required>
-                                @if ($errors->has('userid'))
+                            <input id="id_usuario" type="text" class="form-control" name="id_usuario" value="{{ old('id_usuario') }}" required>
+                                @if ($errors->has('id_usuario'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('userid') }}</strong>
+                                        <strong>{{ $errors->first('id_usuario') }}</strong>
                                     </span>
                                 @endif
                         </div>

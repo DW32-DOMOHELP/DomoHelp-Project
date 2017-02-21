@@ -22,7 +22,8 @@
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/1.7.22/css/materialdesignicons.min.css" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>-->
+    <script src="//js.pusher.com/3.0/pusher.min.js"></script>
     
     <!-- froga
     <link href="bower_components/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
@@ -45,23 +46,25 @@
     <script>
         var pusher = new Pusher("{{env('PUSHER_KEY')}}");
         //subscribirse al canal
-        var channel = pusher.subscribe('domohelp-channel');
+        var channel = pusher.subscribe('domohelp');
         //bindearse al evento que queremos para recibir cada mensaje q se envie como ese evento
-        channel.bind('actualizar-estado', function(data) {
+        channel.bind('actualizar', function(data) {
+            
             
             //coger el json e traducirlo a array de js
             datos=JSON.parse(data);
+
+            
             if(datos["estado"]=="OFF"){
                 //jquery cambiar los items
-                $('#estado'+datos['id_item']).attr('value', 'OFF');
-                $('#imagen'+ datos['id_item']).html('<img src="/img/Luz_Encendida.PNG">');
+                $('#estado'+datos['id_item']).attr('value', 'ON');
+                $('#imagen'+ datos['id_item']).html('<a id="imagen"'+datos['id_item']+' onClick="'+datos['id_item']+'.submit()"><img src="/img/Luz_Apagada.PNG">');
             }
             else{
                 //jquery cambiar los items
-                $('#estado'+datos['id_item']).attr('value', 'ON');
-                $('#imagen'+ datos['id_item']).html('<img src="/img/Luz_Apagada.PNG">');
+                $('#estado'+datos['id_item']).attr('value', 'OFF');
+                $('#imagen'+ datos['id_item']).html('<a id="imagen"'+datos['id_item']+' onClick="'+datos['id_item']+'.submit()"><img src="/img/Luz_Encendida.PNG">');
                  
-                
             }
             
         });
@@ -148,20 +151,25 @@
                 <form id="{{$items[$i]->type}}" action="/interface/{{$items[$i]->id_usuario}}" method="POST">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                     <input type="hidden" name="item" value="{{$items[$i]->type}}"/>
-                    <input id="estado{{$items[$i]->id_item}}" type="hidden" name="state" value="ON"/>
-                    <a id="imagen{{$items[$i]->id_item}}" onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Apagada.PNG"></img></a>
+                    <input id="estado{{$items[$i]->type}}" type="hidden" name="state" value="ON"/>
+                    <a id="imagen{{$items[$i]->type}}" onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Apagada.PNG"></img></a>
                 </form>
             </div>
-            @else
+            @elseif($items[$i]->state == 'ON')
             <div class="button col s12 m6 l6">
                 <h3>{{$items[$i]->description}}</h3>
                 <form id="{{$items[$i]->type}}" action="/interface/{{$items[$i]->id_usuario}}" method="POST">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                     <input type="hidden" name="item" value="{{$items[$i]->type}}"/>
-                    <input id="estado{{$items[$i]->id_item}}" type="hidden" name="state" value="OFF"/>
-                    <a id="imagen{{$items[$i]->id_item}}" onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Encendida.PNG"></img></a>
+                    <input id="estado{{$items[$i]->type}}" type="hidden" name="state" value="OFF"/>
+                    <a id="imagen{{$items[$i]->type}}" onClick="{{$items[$i]->type}}.submit()"><img src="/img/Luz_Encendida.PNG"></img></a>
                 </form>
             </div>
+            @else
+                <div class="col s12 m6 l6">
+                    <h3>{{$items[$i]->description}}</h3>
+                    <p>{{$items[$i]->state}}</p>
+                </div>
             @endif
             @if ($i % 2 != 0)
                 </div>

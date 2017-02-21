@@ -32,5 +32,5 @@
         </tbody>
     </table>
     {!! $items -> render() !!}
-    
+<a href="{{ url('/admin') }}" class="waves-effect waves-light btn">Regresar al Panel de Administración</a>    
 @endsection

@@ -43,8 +43,8 @@ class ItemController extends Controller
     {
         $item = new Item($request -> all());
         $item -> save();
-        Flash::success("Se ha registrado ". $user->name . " de forma correcta");
-        return redirect()->route('users.index');
+        Flash::success("Se ha añadido ". $item->name . " de forma correcta");
+        return redirect()->route('items.index');
     }
 
     /**
@@ -84,11 +84,11 @@ class ItemController extends Controller
         $item->ip = $request->ip;
         $item->type = $request->type;
         $item->description = $request->description;
-        $item->state = $request->state;
+        //$item->state = $request->state;
         $item->id_usuario = $request->id_usuario;
-        $user -> save();
+        $item -> save();
         
-        Flash::warning("El dispositivo". $type->type . " se ha editado de forma correcta");
+        Flash::warning("El dispositivo ". $item->type . " se ha editado de forma correcta");
         return redirect()->route('items.index');
     }
 
@@ -103,7 +103,7 @@ class ItemController extends Controller
         $item = Item::find($id_item);
         $item->delete();
         
-        Flash::warning("El dispositivo". $type->type . " se ha eliminado de forma correcta");
+        Flash::warning("El dispositivo ". $item->type . " se ha eliminado de forma correcta");
         return redirect()->route('items.index');
     }
 }

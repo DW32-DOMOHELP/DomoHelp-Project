@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use HttpOz\Roles\Models\Role;
+use Illuminate\Http\Request;
 use Mail;
 
 class RegisterController extends Controller
@@ -77,13 +78,22 @@ class RegisterController extends Controller
         ]);
         
         Mail::send('03_mails.registro', $data, function($message) use ($data) {
-             $message->from('domohelpproject@gmail.com', "DomoHelp");
-                $message->subject("Welcome to site name");
-                $message->to($data['email']);
+            $message->from('domohelpproject@gmail.com', 'DomoHelp Support');
+            $message->subject('Bienvenid@ a DomoHelp');
+            $message->to($data['email']);
         });
         
         return $user;
         $user = User::find($data['email']);
         $user-> attachRole(3);
+        
+        
+        
+        // Mail::send('03_mails.registro', ['name' => $user], function($message) use ($user){
+            
+        //     $message->from('domohelpproject@gmail.com', 'DomoHelp Support');
+        //     $message->to($user->'email', $user->'name')->subject('Bienvenid@ a DomoHelp');
+        
+        // });
     }
 }

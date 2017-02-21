@@ -40,7 +40,7 @@
       @if (Auth::guest())
       <a id="botonLogin" class="waves-effect btn amber darken-3" href="{{ url('/login') }}">Login</a>
       @else
-      <a id="botonLogin" class="waves-effect btn amber darken-3" href="{{ route('InterfaceUser', ['id_user' => Auth::user()->id_user])}}">{{ Auth::user()->name }}</a>
+      <a id="botonLogin" class="waves-effect btn amber darken-3" href="{{ url('/interface') }}">{{ Auth::user()->name }}</a>
       @endif
 
       <div id="index-banner" class="parallax-container">
