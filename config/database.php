@@ -52,7 +52,7 @@ return [
             'prefix' => '',
         ],*/
 
-        /*'mysql' => [
+        'mysql' => [
              'driver' => 'mysql',
              'host' => env('DB_HOST', getenv('IP')),
              'port' => env('DB_PORT', '3306'),
@@ -64,11 +64,11 @@ return [
              'prefix' => '',
              'strict' => false,
              'engine' => null,
-         ],*/
+         ],
         
         
         
-        'pgsql' => [
+        /*'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '5432'),
@@ -79,7 +79,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
+        ],*/
 
     ],
 
