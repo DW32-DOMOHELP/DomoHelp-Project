@@ -18,8 +18,7 @@ Características
 - Formulario de contacto con gmail
 - Datos en tiempo real con Pusher
 - **Account Management**
- - Detalles de perfil
- - Cambio de contraseña
+    - Cambio de contraseña en caso de no acordarse de ella
 
 ### Landing Page
 La landing page es la primera página que ven los usuarios al acceder a nuestra web. Esta contiene un boton login para que el usuario se
@@ -103,9 +102,115 @@ En el caso de que el usuario sea cliente, la interfaz se creara mostrando los di
 sacando los datos de la base de datos.
 
 En la interfaz se mostraran 2 tipos de dispositivos:
+
       - Dispositivos de Luz: En la interfaz se mostrará la bombilla en dos estados diferentes, la luz encendida y la luz apagada,
         si pulsamos la bombilla cuando esta apagada esta se encendera en la aplicacion y en casa. Lo mismo al reves.
         
       - Sensor de temperatura: En la interfaz aparecera el dato que nos envia el sensor con la temperatura que hace en tiempo real
         en el hogar del cliente.
+Uso de la API
+----------------
+| Method    | URI                            | Name                | Action                                                                 |
+| --------- | ------------------------------ | ------------------- | ---------------------------------------------------------------------- |
+| GET|HEAD  | /                              |  .................. | Closure                                                                |
+| GET|HEAD  | admin                          |  .................. | Closure                                                                | 
+| GET|HEAD  | admin/items                    | items.index         | App\Http\Controllers\ItemController@index                              | 
+| POST      | admin/items                    | items.store         | App\Http\Controllers\ItemController@store                              | 
+| GET|HEAD  | admin/items/create             | items.create        | App\Http\Controllers\ItemController@create                             | 
+| GET|HEAD  | admin/items/{id_item}/destroy  | admin.items.destroy | App\Http\Controllers\ItemController@destroy                            |
+| GET|HEAD  | admin/items/{id_item}/edit     | admin.items.edit    | App\Http\Controllers\ItemController@edit                               |
+| DELETE    | admin/items/{item}             | items.destroy       | App\Http\Controllers\ItemController@destroy                            |
+| PUT|PATCH | admin/items/{item}             | items.update        | App\Http\Controllers\ItemController@update                             |
+| GET|HEAD  | admin/items/{item}             | items.show          | App\Http\Controllers\ItemController@show                               |
+| GET|HEAD  | admin/items/{item}/edit        | items.edit          | App\Http\Controllers\ItemController@edit                               |
+| POST      | admin/users                    | users.store         | App\Http\Controllers\UserController@store                              |
+| GET|HEAD  | admin/users                    | users.index         | App\Http\Controllers\UserController@index                              |
+| GET|HEAD  | admin/users/create             | users.create        | App\Http\Controllers\UserController@create                             |
+| GET|HEAD  | admin/users/{id_user}/destroy  | admin.users.destroy | App\Http\Controllers\UserController@destroy                            |
+| GET|HEAD  | admin/users/{id_user}/edit     | admin.users.edit    | App\Http\Controllers\UserController@edit                               |
+| GET|HEAD  | admin/users/{user}             | users.show          | App\Http\Controllers\UserController@show                               |
+| DELETE    | admin/users/{user}             | users.destroy       | App\Http\Controllers\UserController@destroy                            | 
+| PUT|PATCH | admin/users/{user}             | users.update        | App\Http\Controllers\UserController@update                             |
+| GET|HEAD  | admin/users/{user}/edit        | users.edit          | App\Http\Controllers\UserController@edit                               |
+| GET|HEAD  | api/user                       | ................... | Closure                                                                |
+| POST      | home                           | contact_store       | App\Http\Controllers\HomeController@store                              |
+| GET|HEAD  | home                           | home                | App\Http\Controllers\HomeController@create                             |
+| POST      | interface                      | ................... | Closure                                                                |
+| GET|HEAD  | interface                      | ................... | Closure                                                                |
+| GET|HEAD  | interface/{id_user}            | InterfaceUser       | App\Http\Controllers\stateController@sacarItems                        |
+| POST      | interface/{id_user}            | CambioEstado        | App\Http\Controllers\InterfaceController@sendCommand                   |
+| GET|HEAD  | interface/{id_user}/{id}/{val} | ................... | App\Http\Controllers\stateController@getItemState                      |
+| POST      | login                          | ................... | App\Http\Controllers\Auth\LoginController@login                        |
+| GET|HEAD  | login                          | login               | App\Http\Controllers\Auth\LoginController@showLoginForm                | 
+| GET|HEAD  | logout                         | ................... | Closure                                                                | 
+| POST      | logout                         | logout              | App\Http\Controllers\Auth\LoginController@logout                       |
+| POST      | password/email                 | ................... | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  |
+| GET|HEAD  | password/reset                 | ................... | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm |
+| POST      | password/reset                 | ................... | App\Http\Controllers\Auth\ResetPasswordController@reset                |
+| GET|HEAD  | password/reset/{token}         | ................... | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        |
+| GET|HEAD  | register                       | register            | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      |
+| POST      | register                       | ................... | App\Http\Controllers\Auth\RegisterController@register                  |
+
+
+| Nombre                                        | Descripción                                                        |
+| --------------------------------------------- | ------------------------------------------------------------------ |
+| **config**/passport.js                        | Passport Local y OAuth estrategias.                                |
+| **controllers**/Administracion.js             | Controller para administración                                     |
+| **controllers**/Alertas.js                    | Controller el form de alertas                                      |
+| **controllers**/Comprar.js                    | Controller el form de compra/renovación                            |
+| **controllers**/DatosAPI.js                   | Controller para las API de datos que envían los drones.            |
+| **controllers**/DronesAPI.js                  | Controller para las API de drones.                                 |
+| **controllers**/Email.js                      | Controller para enviar correos.                                    |
+| **controllers**/error404.js                   | Controller que salta cuando no se envían datos APIs correctamente. |
+| **controllers**/Estructura_Email.js           | Controller para Mailgun.                                           |
+| **controllers**/Home.js                       | Controller para sessiones de usuario.                              |
+| **controllers**/LoginRegistro.js              | Controller para login y registro.                                  |
+| **controllers**/Perfil.js                     | Controller para el perfil de usuario.                              |
+| **controllers**/Productos.js                  | Controller para productos.                                         |
+| **controllers**/Pronosticos.js                | Controller para pronósticos.                                       |
+| **controllers**/RangoFecha.js                 | Controller para el form de rango de fechas.                        |
+| **controllers**/Tienda.js                     | Controller para la tienda.                                         |
+| **controllers**/UploadImage.js                | Controller para poder subir avatares.                              |
+| **controllers**/validadarAPI.js               | Controller para validar en el servidor las APIs.                   |
+| **models**/Alertas.js                         | Schema Mongoose y model de Alertas.                                |
+| **models**/Dato.js                            | Schema Mongoose y model de Datos.                                  |
+| **models**/Drones.js                          | Schema Mongoose y model de Drones.                                 |
+| **models**/HistorialPedidos.js                | Schema Mongoose y model de HistorialPedidos.                       |
+| **models**/Productos.js                       | Schema Mongoose y model de Productos.                              |
+| **models**/Usuario.js                         | Schema Mongoose y model de Usuario                                 |
+| **public**/                                   | (fonts, css, js, img).                                             |
+| **public**/**avatar**/                        | El lugar donde se guardan los avatares.                            |
+| **public**/**bootstrap**/                     | Todo lo relacinado con bootstrap.                                  |
+| **public**/**css**/                           | Ubicación de los css.                                              |
+| **public**/**dist**/                          | Un theme de boostrap.                                              |
+| **public**/**icons**/                         | Iconos que utilizamos.                                             |
+| **public**/**images**/                        | Imágenes que utilizamos.                                           |
+| **public**/**js**/browserMqtt.js              | Librería Mqtt.                                                     |
+| **public**/**js**/comprar.js                  | Todo lo relacionado con la página de compra.                       |
+| **public**/**js**/cookie.js                   | Script para las cookies.                                           |
+| **public**/**js**/migrafica2.js               | Script para mostrar gráficas.                                      |
+| **public**/**js**/modernizr.js                | Librería Webflow.                                                  |
+| **public**/**js**/myscriptMongo.js            | Script que controla toda la página de administración.              |
+| **public**/**js**/pace.min.js                 | Librería pace, barra de progreso de carga de la página.            |
+| **public**/**js**/scriptMqtt.js               | Script para el protocolo MQTT.                                     |
+| **public**/**js**/scriptsMapa.js              | Script para las rutas del dron.                                    |
+| **public**/**js**/subscripcion.js             | Script para el modal de subscripción.                              |
+| **public**/**js**/validar_administracion.js   | Validaciones de formularios de la página administración.           |
+| **public**/**js**/validar_compra.js           | Validaciones de formularios de la página compra.                   |
+| **public**/**js**/validar_index.js            | Validaciones de formularios de la página index.                    |
+| **public**/**js**/validar_perfil.js           | Validaciones de formularios de la página perfil.                   |
+| **public**/**js**/validar_recoverPass.js      | Validación de formularios del modal de recuperación de contraseña. |
+| **public**/**js**/webflow.js                  | Librería Webflow.                                                  |
+| **public**/**libs**/                          | Librerias JQuery.                                                  |
+| **views**/**layouts**/main.handlebars         | Base de la plantilla.                                              |
+| **views/partials**/modal.handlebars           | Plantilla del modal de login/registro.                             |
+| **views/partials**/404.handlebars             | Página de error.                                                   |
+| **views/partials**/admin.handlebars           | Página de administración de la base de datos.                      |
+| **views/partials**/administracion.handlebars  | Página de administración del dron.                                 |
+| **views/partials**/comprar.handlebars         | Página de la tienda.                                               |
+| **views/partials**/index.handlebars           | Página principal de la Web.                                        |
+| **views/partials**/perfil.handlebars          | Página de perfil de usuario.                                       |
+| **views/partials**/recoverPassword.handlebars | Página para mostrar modal de recuperación de contraseña.           |
+| .env. example                                 | Tus API keys, tokens, contraseñas y database URI.                  |
+| app.js                                        | Archivo principal de la aplicación.                                |
         
