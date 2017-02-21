@@ -49,6 +49,7 @@ Características
 ### Heroku
 
 <img src="https://a.slack-edge.com/ae7f/plugins/heroku/assets/service_512.png" width="200">
+
     Para desplegar la aplicación en heroku hemos seguido los pasos de la siguiente guia: https://devcenter.heroku.com/articles/getting-started-with-php#set-up
 
 ----------------------------------------------------------------------------------------------
