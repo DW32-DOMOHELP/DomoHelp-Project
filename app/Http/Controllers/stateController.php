@@ -14,21 +14,20 @@ class stateController extends Controller
 {
     
     public function getItemState($id_user, $id, $val){
-        //Coger item del usuario solo HACER
         //$id_user =  Auth::user()->id_user ;
         
         
         DB::table('items')
             ->where('type', $id)
             ->update(['state' => $val]);
-        
-        //hacer el pusher
+            
+        //Creamos el Psuher
         $pusher = App::make('pusher');
-        //hacer un array con los datos a pasar
+        //Creamos un array con los datos que vamos a pasar
         $arr = array ('estado' => $val, 'id_item' => $id);
-        //pasarlo a json
+        //Pasamos los datos a JSON
         $datos=json_encode($arr);
-        //mandar mensaje
+        //Creamos el canal y el evento 
         $pusher->trigger('domohelp', 'actualizar', $datos);
     }
     

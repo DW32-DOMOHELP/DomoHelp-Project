@@ -134,7 +134,9 @@
     </div>
    
     <div class="row">
-        <div style="text-align:center" class="col s12 m12 l12"><h1>Bienvenido a tu interfaz</h1></div>
+        <div id="temperature" style="text-align:center" class="col s12 m3 l3"><h1></h1></div>
+        <div style="text-align:center" class="col s12 m6 l6"><h1>Bienvenido {{ Auth::user()->name }}</h1></div>
+        <div id="data" style="text-align:center" class="col s12 m3 l3"></div>
     </div>
         
         <div class="section">
@@ -166,10 +168,13 @@
                 </form>
             </div>
             @else
-                <div class="col s12 m6 l6">
-                    <h3>{{$items[$i]->description}}</h3>
-                    <p>{{$items[$i]->state}}</p>
-                </div>
+                <script>
+                    $('#temperature').html("<h1><i class='mdi mdi-thermometer-lines mdi-48px'></i> {{$items[$i]->state}} ºC</h1>"); 
+                </script>
+                <!--<div class="col s12 m6 l6">-->
+                <!--    <h3>{{$items[$i]->description}}</h3>-->
+                <!--    <p>{{$items[$i]->state}}</p>-->
+                <!--</div>-->
             @endif
             @if ($i % 2 != 0)
                 </div>
