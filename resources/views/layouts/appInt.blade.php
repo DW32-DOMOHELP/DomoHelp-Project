@@ -135,8 +135,8 @@
    
     <div class="row">
         <div id="temperature" style="text-align:center" class="col s12 m3 l3"><h1></h1></div>
-        <div style="text-align:center" class="col s12 m6 l6"><h1>Bienvenido {{ Auth::user()->name }}</h1></div>
-        <div id="data" style="text-align:center" class="col s12 m3 l3"></div>
+        <div style="text-align:center" class="col s12 m9 l9"><h1>Bienvenido {{ Auth::user()->name }}</h1></div>
+        <!--<div id="data" style="text-align:center" class="col s12 m3 l3"></div>-->
     </div>
         
         <div class="section">
